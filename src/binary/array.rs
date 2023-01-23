@@ -5,7 +5,7 @@ use arrow2::bitmap::utils::{BitmapIter, ZipValidity};
 use arrow2::bitmap::Bitmap;
 use rstar::RTree;
 
-/// A [`GeometryArray`] semantically equivalent to `Vec<Option<Geometry>>` using Arrow's
+/// A [`GeometryArrayTrait`] semantically equivalent to `Vec<Option<Geometry>>` using Arrow's
 /// in-memory representation.
 #[derive(Debug, Clone)]
 pub struct WKBArray(BinaryArray<i64>);

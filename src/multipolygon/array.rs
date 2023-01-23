@@ -11,7 +11,7 @@ use rstar::RTree;
 
 use super::MutableMultiPolygonArray;
 
-/// A [`GeometryArray`] semantically equivalent to `Vec<Option<MultiPolygon>>` using Arrow's
+/// A [`GeometryArrayTrait`] semantically equivalent to `Vec<Option<MultiPolygon>>` using Arrow's
 /// in-memory representation.
 #[derive(Debug, Clone)]
 pub struct MultiPolygonArray {

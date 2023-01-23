@@ -11,7 +11,7 @@ use rstar::RTree;
 
 use super::MutableLineStringArray;
 
-/// A [`GeometryArray`] semantically equivalent to `Vec<Option<LineString>>` using Arrow's
+/// A [`GeometryArrayTrait`] semantically equivalent to `Vec<Option<LineString>>` using Arrow's
 /// in-memory representation.
 #[derive(Debug, Clone)]
 pub struct LineStringArray {
