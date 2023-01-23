@@ -3,7 +3,7 @@ use crate::geo_traits::PointTrait;
 use arrow2::buffer::Buffer;
 use rstar::{RTreeObject, AABB};
 
-/// An arrow equivalent of a Point
+/// An Arrow equivalent of a Point
 #[derive(Debug, Clone)]
 pub struct Point<'a> {
     pub x: &'a Buffer<f64>,

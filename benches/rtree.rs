@@ -2,7 +2,7 @@ use arrow2::array::BinaryArray;
 use arrow2::io::parquet::read::{infer_schema, read_metadata, FileReader};
 use criterion::{criterion_group, criterion_main, Bencher, Criterion};
 use geo::BoundingRect;
-use geopolars_arrow::{GeometryArrayTrait, MultiPolygonArray};
+use geoarrow::{GeometryArrayTrait, MultiPolygonArray};
 use geozero::wkb::Wkb;
 use geozero::ToGeo;
 use rstar::{RTree, RTreeObject, AABB};

@@ -6,7 +6,7 @@ use arrow2::buffer::Buffer;
 use arrow2::offset::OffsetsBuffer;
 use rstar::{RTreeObject, AABB};
 
-/// An arrow equivalent of a MultiPoint
+/// An Arrow equivalent of a MultiPoint
 #[derive(Debug, Clone)]
 pub struct MultiPoint<'a> {
     /// Buffer of x coordinates

@@ -594,6 +594,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "geoarrow"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "arrow2",
+ "criterion",
+ "geo",
+ "geos",
+ "geozero",
+ "rstar",
+ "thiserror",
+]
+
+[[package]]
 name = "geographiclib-rs"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -611,20 +625,6 @@ dependencies = [
  "log",
  "serde",
  "serde_json",
- "thiserror",
-]
-
-[[package]]
-name = "geopolars-arrow"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "arrow2",
- "criterion",
- "geo",
- "geos",
- "geozero",
- "rstar",
  "thiserror",
 ]
 
