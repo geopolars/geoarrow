@@ -1,7 +1,5 @@
-//! Helpers for working with GeoArrow geometries
-//!
-//! At some point in the future, this will likely become a public standalone geoarrow module, or be
-//! integrated into geozero
+//! `geoarrow`: A Rust implementation of the [GeoArrow](https://github.com/geoarrow/geoarrow)
+//! specification.
 
 pub use binary::{MutableWKBArray, WKBArray, WKB};
 pub use enum_::GeometryArray;
@@ -25,4 +23,3 @@ pub mod multipolygon;
 pub mod point;
 pub mod polygon;
 pub mod trait_;
-pub mod util;

@@ -3,7 +3,7 @@ use geo::BoundingRect;
 use geozero::ToGeo;
 use rstar::{RTreeObject, AABB};
 
-/// An arrow equivalent of a Point
+/// An Arrow equivalent of a Point
 #[derive(Debug, Clone)]
 pub struct WKB<'a> {
     pub arr: &'a BinaryArray<i64>,

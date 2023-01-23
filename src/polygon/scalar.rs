@@ -7,7 +7,7 @@ use rstar::{RTreeObject, AABB};
 
 use super::iterator::PolygonInteriorIterator;
 
-/// An arrow equivalent of a Polygon
+/// An Arrow equivalent of a Polygon
 #[derive(Debug, Clone)]
 pub struct Polygon<'a> {
     /// Buffer of x coordinates

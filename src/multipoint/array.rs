@@ -9,7 +9,7 @@ use arrow2::offset::OffsetsBuffer;
 use geozero::{GeomProcessor, GeozeroGeometry};
 use rstar::RTree;
 
-/// A [`GeometryArray`] semantically equivalent to `Vec<Option<MultiPoint>>` using Arrow's
+/// A [`GeometryArrayTrait`] semantically equivalent to `Vec<Option<MultiPoint>>` using Arrow's
 /// in-memory representation.
 #[derive(Debug, Clone)]
 pub struct MultiPointArray {

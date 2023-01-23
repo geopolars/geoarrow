@@ -10,7 +10,7 @@ use rstar::RTree;
 
 use super::MutableMultiLineStringArray;
 
-/// A [`GeometryArray`] semantically equivalent to `Vec<Option<MultiLineString>>` using Arrow's
+/// A [`GeometryArrayTrait`] semantically equivalent to `Vec<Option<MultiLineString>>` using Arrow's
 /// in-memory representation.
 #[derive(Debug, Clone)]
 pub struct MultiLineStringArray {

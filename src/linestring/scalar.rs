@@ -7,7 +7,7 @@ use rstar::{RTreeObject, AABB};
 
 use super::iterator::LineStringIterator;
 
-/// An arrow equivalent of a LineString
+/// An Arrow equivalent of a LineString
 #[derive(Debug, Clone)]
 pub struct LineString<'a> {
     /// Buffer of x coordinates

@@ -7,7 +7,7 @@ use rstar::{RTreeObject, AABB};
 
 use super::iterator::MultiLineStringIterator;
 
-/// An arrow equivalent of a Polygon
+/// An Arrow equivalent of a Polygon
 #[derive(Debug, Clone)]
 pub struct MultiLineString<'a> {
     /// Buffer of x coordinates
