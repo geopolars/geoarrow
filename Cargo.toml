@@ -12,7 +12,7 @@ geo = "0.23"
 geos = { version = "8", features = ["v3_8_0", "geo"], optional = true }
 thiserror = "1"
 anyhow = "1"
-geozero = { version = "0.9.4", features = ["with-wkb"] }
+geozero = { version = "0.9.7", features = ["with-wkb"] }
 arrow2 = { version = "0.15" }
 # TODO: properly feature gate this
 rstar = { version = "0.9.3" }
