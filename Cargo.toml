@@ -13,12 +13,12 @@ geos = { version = "8", features = ["v3_8_0", "geo"], optional = true }
 thiserror = "1"
 anyhow = "1"
 geozero = { version = "0.9.4", features = ["with-wkb"] }
-arrow2 = { version = "0.15" }
+arrow2 = { version = "0.17" }
 # TODO: properly feature gate this
 rstar = { version = "0.9.3" }
 
 [dev-dependencies]
-arrow2 = { version = "0.15", features = [
+arrow2 = { version = "0.17", features = [
   "io_parquet",
   "io_parquet_compression",
 ] }
