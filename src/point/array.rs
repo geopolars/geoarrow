@@ -1,4 +1,5 @@
 use crate::error::GeoArrowError;
+use crate::slice::slice_validity_unchecked;
 use crate::{GeometryArrayTrait, MutablePointArray};
 use arrow2::array::{Array, PrimitiveArray, StructArray};
 use arrow2::bitmap::utils::{BitmapIter, ZipValidity};
@@ -123,49 +124,39 @@ impl<'a> GeometryArrayTrait<'a> for PointArray {
         self.validity.as_ref()
     }
 
-    /// Returns a clone of this [`PrimitiveArray`] sliced by an offset and length.
+    /// Slices this [`PrimitiveArray`] in place.
     /// # Implementation
-    /// This operation is `O(1)` as it amounts to increase two ref counts.
+    /// This operation is `O(1)`.
     /// # Examples
     /// ```
     /// use arrow2::array::PrimitiveArray;
     ///
     /// let array = PrimitiveArray::from_vec(vec![1, 2, 3]);
     /// assert_eq!(format!("{:?}", array), "Int32[1, 2, 3]");
-    /// let sliced = array.slice(1, 1);
-    /// assert_eq!(format!("{:?}", sliced), "Int32[2]");
-    /// // note: `sliced` and `array` share the same memory region.
+    /// array.slice(1, 1);
+    /// assert_eq!(format!("{:?}", array), "Int32[2]");
     /// ```
     /// # Panic
     /// This function panics iff `offset + length > self.len()`.
     #[inline]
-    #[must_use]
-    fn slice(&self, offset: usize, length: usize) -> Self {
+    fn slice(&mut self, offset: usize, length: usize) {
         assert!(
             offset + length <= self.len(),
             "offset + length may not exceed length of array"
         );
-        unsafe { self.slice_unchecked(offset, length) }
+        unsafe { self.slice_unchecked(offset, length) };
     }
 
-    /// Returns a clone of this [`PrimitiveArray`] sliced by an offset and length.
+    /// Slices this [`PrimitiveArray`] in place.
     /// # Implementation
-    /// This operation is `O(1)` as it amounts to increase two ref counts.
+    /// This operation is `O(1)`.
     /// # Safety
     /// The caller must ensure that `offset + length <= self.len()`.
     #[inline]
-    #[must_use]
-    unsafe fn slice_unchecked(&self, offset: usize, length: usize) -> Self {
-        let validity = self
-            .validity
-            .clone()
-            .map(|bitmap| bitmap.slice_unchecked(offset, length))
-            .and_then(|bitmap| (bitmap.unset_bits() > 0).then_some(bitmap));
-        Self {
-            x: self.x.clone().slice_unchecked(offset, length),
-            y: self.y.clone().slice_unchecked(offset, length),
-            validity,
-        }
+    unsafe fn slice_unchecked(&mut self, offset: usize, length: usize) {
+        slice_validity_unchecked(&mut self.validity, offset, length);
+        self.x.slice_unchecked(offset, length);
+        self.y.slice_unchecked(offset, length);
     }
 
     fn to_boxed(&self) -> Box<Self> {
@@ -348,9 +339,9 @@ mod test {
     #[test]
     fn slice() {
         let points: Vec<Point> = vec![p0(), p1(), p2()];
-        let point_array: PointArray = points.into();
-        let sliced = point_array.slice(1, 1);
-        assert_eq!(sliced.len(), 1);
-        assert_eq!(sliced.get_as_geo(0), Some(p1()));
+        let mut point_array: PointArray = points.into();
+        point_array.slice(1, 1);
+        assert_eq!(point_array.len(), 1);
+        assert_eq!(point_array.get_as_geo(0), Some(p1()));
     }
 }
